@@ -7,6 +7,8 @@ sin tener que reescribir mil lineas de código.
 Esto lo hace escalable y seguro.
 Con la palabra reservada: IMPORT
 OJO CON LA NOMENCLATURA: no se puede llamar a ficheros que esten encabezados con números.
+Módulos del sistema: Una serie de operaciones y utilidades que intenta resolver problemas 
+con alguna relación.
 """
 
 # llamar a un fichero completo, a todo lo que hay allí
