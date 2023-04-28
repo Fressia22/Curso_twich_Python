@@ -26,7 +26,7 @@ class Player(Enum):
 
 def tenis_game(points: list):
     
-    game = ["Love", "15", "30", "40"]
+    game = ["Love", "15", "30", "40","Fin del partidoo"]
     p1_points = 0
     p2_points = 0
     finished = False
@@ -35,7 +35,7 @@ def tenis_game(points: list):
     for player in points:
 
         error = finished
-
+        
         p1_points += 1 if player == Player.P1 else 0
         p2_points += 1 if player == Player.P2 else 0
 
@@ -47,7 +47,8 @@ def tenis_game(points: list):
             else:
                 finished = True
         else:
-            if p1_points < 4 or p2_points <4:
+            if p1_points <= 3 or p2_points <= 3:
+                #Aca manda a imprimir según el index q le indique la cantidad de puntos q tiene, ubica el rotulo en el listado game
                 print(f"{game[p1_points]} - {game[p2_points]}")
             else:
                 finished = True
@@ -64,7 +65,7 @@ def tenis_game(points: list):
 
 
 #Por ultimo pasamos el listado de los puntos que ocurrieron y los ubicamos en su clase
-tenis_game([Player.P1, Player.P1, Player.P2, Player.P2, Player.P2, Player.P1, Player.P2, Player.P2, Player.P1, Player.P2])
+tenis_game([Player.P1, Player.P1, Player.P2, Player.P2, Player.P1, Player.P2, Player.P1, Player.P1])
 
 #Observación: el control de error no esta bien hecho, porque al introducir más puntos para 1 solo jugador da error, 
 # y cuando la ventaja es para 1 pero estando a diferencia de ventajas no avisa q ha termido a tiempo
