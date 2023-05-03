@@ -30,7 +30,7 @@ def password_gen(length=8, capital=False, numbers=False, symbols=False):
 
     final_lenght = 8 if length < 8 else 16 if length > 16 else length
     #ciclo while para iterar con condicion: la cantidad de caracteres(longitud de contraseñal)
-    while len(password) < length:
+    while len(password) < final_lenght:
         #seleccionar una letra de forma aleatoria con un modulo llamado RANDOM y añadirla a la variable password
         #chr es una funcion de python que ubica el codigo ascii
         password += chr(random.choice(characters))
@@ -59,3 +59,5 @@ print(f"Pasando: length=22 --> {password_gen(length=22)}")
 print(f"Pasando: length=12, capital=True --> {password_gen(length=12, capital=True)}")
 print(f"Pasando: length=12, capital=True, numbers=True --> {password_gen(length=12, capital=True, numbers=True)}")
 print(f"Pasando: length=12, capital=True, numbers=True, symbols=True --> {password_gen(length=12, capital=True, numbers=True, symbols=True)}")
+
+# Podria mejorarse haciendo un control preliminar de si password resultante contiene genuinamente al menos 1 simbolo de lo que se activó en True
