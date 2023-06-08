@@ -18,6 +18,7 @@ Enunciado: Escribe un programa que muestre por consola (con un print) los númer
 def fizz_buzz():
     for index in range(1, 101):
         
+        
         if index % 3 == 0 and index % 5 == 0:
             print("fizz-buzz")
         elif index % 3 == 0:
@@ -27,7 +28,7 @@ def fizz_buzz():
         else:
             print(index)
 
-#fizz_buzz()
+fizz_buzz()
 
 """
 Reto #1
@@ -122,4 +123,4 @@ def reverse(frase: str):
     
     return frase_invertida
 
-print(reverse("Hola Mundo!"))
+#print(reverse("Hola Mundo!"))
