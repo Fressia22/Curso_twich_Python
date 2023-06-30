@@ -1,0 +1,4 @@
+Me llamo Fabrina
+Mi apellido es Rovaretti
+Tengo 35 años
+Mi lenguaje preferido es Python

@@ -1,0 +1,11 @@
+{
+    "Nombre": "Daniel",
+    "Apellido": "Rovaretti",
+    "Edad": "61",
+    "Lenguajes": [
+        "Python",
+        "Golang",
+        "JavaScript"
+    ],
+    "Website": "https://@reina.fabrina.com"
+}
