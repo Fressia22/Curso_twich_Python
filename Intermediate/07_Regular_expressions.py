@@ -15,7 +15,7 @@ muestra aparece en otro lugar nos dará NONE
 Consola:
 <re.Match object; span=(0, 22), match='Ésta es la lección n°7'>
 """
-my_string = "Ésta es la lección n°7:\nLección sobre Expresiones regulares."
+my_string = "Ésta es la lección n°7: Lección sobre Expresiones regulares."
 
 my_other_string = "Ésta no es la lección n°6: Manejo de ficheros."
 
@@ -102,8 +102,92 @@ print(type(my_split))
  re.sub()
  - - - - - - - - - - - - - - - -
 
-SUB Busca un patrón dado y a partir de ese punto nos divide la cadena en una lista de 2 partes/elementos.
+SUB es para sustituir un tramo de cadena por otro str.
 Consola: 
-['Ésta es la lección n°7', ' lección sobre Expresiones regulares.']
-<class 'list'>
+Ésta es la lección n°7:
+Lección sobre RegEx.
 """
+
+my_sub = re.sub("Expresiones regulares", "RegEx", my_string)
+print(my_sub) # Devuelve la cadena de str modificada
+
+# Con el PIPE <|> podemos concatenar varias apariciones para reemplazar con el criterio.
+my_sub = re.sub("lección|Lección", "lexión", my_string)
+print(my_sub)
+
+my_sub = re.sub("[l|L]ección", "LECCIÓN", my_string) # Tambien puede darse ambas alternativas entre corchetes con pipe <[|]>
+print(my_sub)
+
+
+"""
+ - - - - - - - - - - - - - - - - - - - - - - -
+ PATTERNS más específicos de RegExp oficiales
+ - - - - - - - - - - - - - - - - - - - - - - -
+
+Las expresiones regulares son propias de cualquier lenguaje de programación
+Ej:
+[a-c] --> buscará a, b, ó c
+[a-z] --> buscará cualquier caracter entre a y z minúscula
+[0-9] --> buscará cualquier número entre 0 y 9
+[a-zA-Z0-9] --> buscará cualquier caracter minúscula, mayuscula o numeros
+
+[\] --> se usa para escapar caracteres especiales
+    \d --> match cuando el str contiene digitos
+    \D --> match cuando el str NO contiene digitos
+
+[.] --> cualquier caracter (excepto newline <\n> caracter)
+
+[*] --> zero, o más veces
+[?] --> zero, o UNA vez
+[+] --> UNA, o más veces
+
+
+[^] --> que empiece con xcriterio
+[$] --> que termine con xcriterio
+
+[|] --> para enumerar uno u otro
+
+{3} --> exactamente 3 caracteres
+{3,8} --> de 3 a 8 caracteres
+
+...y hay muchas.
+También se pueden utilizar códigos unicode.
+"""
+
+my_pattern = r'[lL]ección'
+print(re.findall(my_pattern, my_string)) # Enlista las coincidencias ya sea con 'L' o con 'l'  
+
+my_pattern = r'[lL]ección|Expresiones'
+print(re.findall(my_pattern, my_string)) # Enlista las coincidencias ya sea con el primer criterio y con el segundo
+
+my_pattern = r"[0-9]"
+print(re.findall(my_pattern, my_string)) # Enlista numeros que haya encontrado en el rango
+
+print(re.search(my_pattern, my_string)) # <re.Match object; span=(21, 22), match='7'>
+
+my_pattern = r"\d"
+print(re.findall(my_pattern, my_string)) # Enlista los caracteres numericos que haya encontrado en el rango
+
+my_pattern = r"\D"
+print(re.findall(my_pattern, my_string)) # Enlista los caracteres NO numericos que haya encontrado en el rango
+
+my_pattern = r"[l]."
+print(re.findall(my_pattern, my_string, re.IGNORECASE)) # Enlista las palabras q empiezan en 'l' y su caracter consiguiente.
+
+my_pattern = r"[:].*"
+print(re.findall(my_pattern, my_string, re.IGNORECASE)) # Enlista todo lo q sigue a partir de los ":" 
+
+# un patrón para buscar match de formato válido de email:
+my_email = "fabri_music.1987@gmail.com" 
+
+my_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z-.]+$"
+
+print(re.match(my_pattern, my_email)) # --> Matcheará si la cadena comienza coincidiendo con el patron
+print(re.search(my_pattern, my_email)) # --> Searcheará si el patron aparece en cualquier parte de la cadena
+print(re.findall(my_pattern, my_email)) # --> Enlistará todas las coincidencias con el patrón
+# ! todas estas funciones aplican si la variable es una cadena de string, no LISTAS u otros objetos.
+
+my_email = "geo_rgina.92@gmail.gob.edu"
+print(re.findall(my_pattern, my_email))
+
+# https://regex101.com
